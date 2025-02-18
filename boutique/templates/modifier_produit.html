@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Modifier le produit</h1>
+<form method="post" enctype="multipart/form-data" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-warning">Enregistrer</button>
+</form>
+<a href="{% url 'gestion:liste_produits' %}" class="btn btn-secondary">Retour</a>
+{% endblock %}

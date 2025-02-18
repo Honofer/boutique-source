@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Erreur</h1>
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+<a href="{% url 'gestion:liste_produits' %}" class="btn btn-primary">Retour</a>
+{% endblock %}

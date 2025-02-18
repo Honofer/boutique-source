@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Rechercher un produit</h1>
+<form method="get" action="{% url 'gestion:rechercher_produit' %}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" placeholder="Nom du produit" class="form-control">
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+</form>
+
+{% if produits %}
+<h2 class="mb-4">Résultats de la recherche</h2>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in produits %}
+        <tr>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.categories.all|join:", " }}</td>
+            <td>{{ produit.quantite }}</td>
+            <td>{{ produit.prix }} FCFA</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

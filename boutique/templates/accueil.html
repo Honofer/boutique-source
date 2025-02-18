@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Bienvenue dans la gestion de la boutique</h1>
+<p>Utilisez le menu pour naviguer.</p>
+
+<div class="row">
+  {% for produit in produits %}
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <img src="{{ produit.image.url }}" class="card-img-top" alt="{{ produit.nom }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ produit.nom }}</h5>
+          <p class="card-text">{{ produit.description }}</p>
+          <a href="{% url 'gestion:produit_detail' produit.id %}" class="btn btn-primary">Voir détail</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

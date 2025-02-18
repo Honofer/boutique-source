@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Facture</h1>
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        Numéro de facture : {{ facture.numero_facture }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Détails de la vente</h5>
+        <p class="card-text"><strong>Date :</strong> {{ facture.date_emission }}</p>
+        <p class="card-text"><strong>Produit :</strong> {{ facture.vente.produit.nom }}</p>
+        <p class="card-text"><strong>Quantité vendue :</strong> {{ facture.vente.quantite_vendue }}</p>
+        <p class="card-text"><strong>Montant total :</strong> {{ facture.vente.montant_total }} FCFA</p>
+    </div>
+    <div class="card-footer text-muted">
+        Merci pour votre achat !
+    </div>
+</div>
+<a href="{% url 'gestion:generate_pdf' facture.id %}" class="btn btn-primary mt-3">Télécharger la facture en PDF</a>
+<a href="{% url 'gestion:liste_ventes' %}" class="btn btn-secondary mt-3">Retour à la liste des ventes</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Effectuer une vente</h1>
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="quantite_vendue" class="form-label">Quantité vendue</label>
+        <input type="number" name="quantite_vendue" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Valider la vente</button>
+</form>
+<a href="{% url 'gestion:liste_produits' %}" class="btn btn-secondary">Retour</a>
+{% endblock %}
